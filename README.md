@@ -12,11 +12,11 @@ O script baixa o MSI, verifica SHA-256, solicita administrador e abre a instalac
 
 ## Downloads e fonte correspondente
 
-[Release v2.0.55](https://github.com/eusouobraam/aion-pulse/releases/tag/v2.0.55) contem o MSI e `aion-pulse-source-2.0.55.zip`, com o codigo-fonte completo correspondente, instrucoes de build e licenca GPL-3.0. A pasta `web` contem a landing page; `install.ps1` e o instalador por comando.
+[Release v2.0.56](https://github.com/eusouobraam/aion-pulse/releases/tag/v2.0.56) contem o MSI e `aion-pulse-source-2.0.56.zip`, com o codigo-fonte completo correspondente, instrucoes de build e licenca GPL-3.0. A pasta `web` contem a landing page; `install.ps1` e o instalador por comando.
 
 ## Estado do projeto
 
-30 testes JS e 160 testes Rust passaram. O MSI Windows x64 foi compilado e seu conteudo verificado. **Captura real Global e ExitLag ainda em validacao**, com relato de ausencia de dano sob investigacao. Nao ha garantia de capturar todos os jogadores ou atribuir todas as invocacoes. Os exemplos da pagina sao simulados.
+30 testes JS e 161 testes Rust passaram. O MSI Windows x64 foi compilado e seu conteudo verificado. **Captura real Global e ExitLag ainda em validacao**, com relato de ausencia de dano sob investigacao. Nao ha garantia de capturar todos os jogadores ou atribuir todas as invocacoes. Os exemplos da pagina sao simulados.
 
 ## Creditos
 
