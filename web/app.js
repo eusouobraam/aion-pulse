@@ -1,0 +1,3 @@
+const button=document.getElementById('copy-command');
+button?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.getElementById('install-command').textContent);document.getElementById('copy-status').textContent='Comando copiado. Cole no CMD do Windows.';button.textContent='Copiado ✓';window.va?.('event',{name:'copy_install_command'});}catch{document.getElementById('copy-status').textContent='Selecione o comando acima e copie com Ctrl+C.';}});
+document.querySelectorAll('[data-track]').forEach(link=>link.addEventListener('click',()=>window.va?.('event',{name:link.dataset.track})));
