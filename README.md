@@ -24,4 +24,4 @@ Base: [A2Tools DPS Meter](https://github.com/taengu/A2Tools-DPS-Meter), por taen
 
 ## Site e acompanhamento
 
-Landing page estatica hospedada na Vercel. Visitas podem ser acompanhadas no painel Web Analytics do projeto. O site nao recebe dados de combate do aplicativo.
+[Landing page na Vercel](https://aion-pulse.vercel.app) e [pagina no GitHub Pages](https://eusouobraam.github.io/aion-pulse/). Visitas podem ser acompanhadas no painel Web Analytics do projeto. O site nao recebe dados de combate do aplicativo.
