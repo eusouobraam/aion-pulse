@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $pulseAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-$pulseWork = Join-Path $env:TEMP 'AionPulse-Install-2.0.54'
+$pulseWork = Join-Path $env:TEMP 'AionPulse-Install-2.0.55'
 New-Item -ItemType Directory -Path $pulseWork -Force | Out-Null
 if (-not $pulseAdmin) {
     $pulseScript = Join-Path $pulseWork 'install.ps1'
@@ -8,10 +8,10 @@ if (-not $pulseAdmin) {
     Start-Process powershell.exe -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$pulseScript`"" -Wait
     return
 }
-$pulsePackage = Join-Path $pulseWork 'Aion-Pulse-2.0.54-x64.msi'
+$pulsePackage = Join-Path $pulseWork 'Aion-Pulse-2.0.55-x64.msi'
 Write-Host 'Baixando Aion Pulse...'
-Invoke-WebRequest 'https://github.com/eusouobraam/aion-pulse/releases/download/v2.0.54/Aion-Pulse-2.0.54-x64.msi' -OutFile $pulsePackage -UseBasicParsing
-if ((Get-FileHash $pulsePackage -Algorithm SHA256).Hash -ne '01C7942506C6D351CCDE072E0BA00DB837D559AC57FCAEAF16457FA81A2B52D9') { throw 'A verificacao do MSI falhou. Instalacao cancelada.' }
+Invoke-WebRequest 'https://github.com/eusouobraam/aion-pulse/releases/download/v2.0.55/Aion-Pulse-2.0.55-x64.msi' -OutFile $pulsePackage -UseBasicParsing
+if ((Get-FileHash $pulsePackage -Algorithm SHA256).Hash -ne '66E3EBFEA9EF756F615BCF96D71B103D8AA9A24C96D837C1E1ABC7C6FA7370FE') { throw 'A verificacao do MSI falhou. Instalacao cancelada.' }
 Get-Process -Name a2tools-dps-meter -ErrorAction SilentlyContinue | Stop-Process -Force
 $pulseInstall = Start-Process msiexec.exe -ArgumentList "/i `"$pulsePackage`" /passive /norestart" -Wait -PassThru
 if ($pulseInstall.ExitCode -notin @(0,3010)) { throw "Falha no MSI: $($pulseInstall.ExitCode)" }
