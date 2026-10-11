@@ -29,5 +29,15 @@ if (-not (Test-Path (Join-Path $env:WINDIR 'System32\wpcap.dll'))) {
 }
 $pulseApp = Join-Path $env:ProgramFiles 'Aion Pulse\a2tools-dps-meter.exe'
 if (-not (Test-Path $pulseApp)) { throw 'Executavel instalado nao encontrado.' }
-if (-not (Get-Process a2tools-dps-meter -ErrorAction SilentlyContinue)) { Start-Process $pulseApp }
+if (-not (Get-Process a2tools-dps-meter -ErrorAction SilentlyContinue)) {
+    try { Start-Process -FilePath $pulseApp -ErrorAction Stop }
+    catch {
+        Write-Host 'O MSI foi instalado, mas o Windows bloqueou a abertura do Aion Pulse.' -ForegroundColor Yellow
+        Write-Host ('Assinatura do executavel: ' + (Get-AuthenticodeSignature -LiteralPath $pulseApp).Status)
+        Write-Host 'Este bloqueio exige uma versao assinada aceita pela politica ou autorizacao do administrador do computador.'
+        Write-Host 'Executar novamente como administrador ou usar ExecutionPolicy Bypass nao libera Controle de Aplicativo.'
+        Write-Host ('Detalhe do Windows: ' + $_.Exception.Message)
+        exit 1
+    }
+}
 Write-Host 'Aion Pulse instalado. A captura Global/ExitLag ainda esta em validacao. Use ALL para testar qualquer alvo.'
